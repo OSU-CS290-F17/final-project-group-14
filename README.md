@@ -18,6 +18,11 @@ JS     | HTML    | CSS   | MISC
   - [ ] Login Style (optional)
 
 - [ ] HTML
+  - [ ] Partials
+    - [ ] Account Event (for activity page. ex Deposit of $20)
+    - [ ] Header
+    - [ ] Footer (optional)
+    - [ ] Account Info (for accounts page)
   - [ ] Accounts Page
   - [ ] Account Activity Page
   - [ ] Login (optional)
@@ -29,12 +34,13 @@ JS     | HTML    | CSS   | MISC
     - [ ] Transfer to another user (optional)
     - [ ] Withdraw
   - [ ] Server Side Logic
-   - [ ] Make a Transfer
-   - [ ] Make a deposit
-   - [ ] Withdraw
-   - [ ] Transfer to another user
-   - [ ] Serve HTML, as handlebars templates
-   - [ ] Database interaction
+    - [ ] Make a Transfer
+    - [ ] Make a deposit
+    - [ ] Withdraw
+    - [ ] Transfer to another user
+    - [ ] Serve HTML, as handlebars templates
+    - [ ] Database interaction
+    
 - Mongo DB
   - [ ] setup database
-  - [ ] TBD 
+  - [ ] TBD
