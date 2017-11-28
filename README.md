@@ -18,6 +18,13 @@ JS     | HTML    | CSS   | MISC
   - [ ] Login Style (optional)
 
 - [ ] HTML
+  - [ ] Layout
+    - [ ] Main
+      - [ ] link stylesheet
+      - [ ] link necessary templates
+      - [ ] include handlebars runtime
+      - [ ] include index.js
+      - [ ] include other elements
   - [ ] Partials
     - [ ] Account Event (for activity page. ex Deposit of $20)
     - [ ] Header
@@ -40,7 +47,7 @@ JS     | HTML    | CSS   | MISC
     - [ ] Transfer to another user
     - [ ] Serve HTML, as handlebars templates
     - [ ] Database interaction
-    
+
 - Mongo DB
   - [ ] setup database
   - [ ] TBD
