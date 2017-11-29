@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<!-- NOTE: this is the home page and is only the html and is not templitized, I am just making an initial structure, names of class will be the same after templatization -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chase Bank - Credit Card, Mortgage, Auto, Banking Services</title>
+
+    <!-- stylesheets -->
+    <!--Insert Fonts-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- runtime handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.runtime.js" charset="utf-8" defer></script>
+    <!-- Insert compiled handlebars -->
+
+    <script src="/index.js" charset="utf-8" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <!-- Navagation bar: left has alternate menu, middle is the name of company,
+            right has the search bar and sign in button when past the header div -->
+      <nav class="navbar">
+        <ul class="navlist">
+          <li class="navitem navmenu"><i class="fa fa-bars" aria-hidden="true"></i></li>
+          <li class="navitem middle">CHASE</li>
+          <li class="navitem right hidden"><button type="button">Sign in</button></li>
+          <li class="navitem right"><i class="fa fa-search" aria-hidden="true"></i></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="home-page">
+      <!-- This is for the header
+              becuase in the website the "div" under the navbar is merged with the navbar -->
+      <div class="header-content">
+        <div class="promo">
+          <img class="promo-img" src="https://creditcards.chase.com/R-Marketplace/1110008/images/cardart/freedom_unlimited_card.png" alt="Chase Freedom Unlimited credit card">
+          <div class="promo-info">UNLIMTED 1.5% CASH BACK $150 BONUS</div>
+          <button class="promo-button" type="button">Learn more</button>
+        </div>
+      </div>
+
+      <div class="choose-menu">
+        <div class="menu-buttons">
+          <button type="button" class="left-button"><</button>
+            <ul class="menu-list">
+              <li class="menu-item">Savings Accounts</li>
+              <li class="menu-item">Checking Accounts</li>
+              <li class="menu-item">Find a credit card</li>
+              <li class="menu-item">Home Lending</li>
+              <li class="menu-item">Car Buying & Loans</li>
+              <li class="menu-item">Chase for Business</li>
+              <li class="menu-item">Chase Private Client</li>
+              <li class="menu-item">Invest</li>
+              <li class="menu-item">Free credit score</li>
+          <button type="button" class="left-button">></button>
+        </div>
+      </div>
+
+  </body>
+</html>
