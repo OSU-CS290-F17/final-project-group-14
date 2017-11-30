@@ -30,12 +30,12 @@ app.get('/accountPage', function (req, res) {
   res.status(200).render('accountPage');
 });
 
+app.use(express.static('public'));
+
 // 404 page
 app.get('*', function (req, res) {
   res.status(404).render('404');
 });
-
-app.use(express.static('public'));
 
 app.listen(port, function () {
   console.log("== Server is listening on port", port);
