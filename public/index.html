@@ -19,6 +19,7 @@
   </head>
 
   <body>
+    <img class="header-background" src="http://walldiskpaper.com/wp-content/uploads/2014/11/Green-Background-Android-Phones.jpg" alt="background image" style="width: 1000px; height:300px;"> <!-- Will remove inline style, image is huge and I am downsizing for better viewing -->
     <header>
       <!-- Navagation bar: left has alternate menu, middle is the name of company,
             right has the search bar and sign in button when past the header div -->
@@ -26,7 +27,7 @@
         <ul class="navlist">
           <li class="navitem navmenu"><i class="fa fa-bars" aria-hidden="true"></i></li>
           <li class="navitem middle">CHASE</li>
-          <li class="navitem right hidden"><button type="button">Sign in</button></li>
+          <li class="navitem right"><a href="#"><button type="button">Sign in</button></a></li>
           <li class="navitem right"><i class="fa fa-search" aria-hidden="true"></i></li>
         </ul>
       </nav>
@@ -38,27 +39,104 @@
       <div class="header-content">
         <div class="promo">
           <img class="promo-img" src="https://creditcards.chase.com/R-Marketplace/1110008/images/cardart/freedom_unlimited_card.png" alt="Chase Freedom Unlimited credit card">
-          <div class="promo-info">UNLIMTED 1.5% CASH BACK $150 BONUS</div>
-          <button class="promo-button" type="button">Learn more</button>
+          <div class="promo-info"><h1>UNLIMTED 1.5% CASH BACK</h1> <h2>$150 BONUS</h2></div>
+          <button class="learn-button blue" type="button">Learn more</button>
         </div>
       </div>
 
-      <div class="choose-menu">
-        <div class="menu-buttons">
+      <!-- Horizontal button menu list -->
+      <div id="choose-menu">
+        <p class="title">Choose What's right for you</p>
+        <div class="menu-items">
           <button type="button" class="left-button"><</button>
             <ul class="menu-list">
-              <li class="menu-item">Savings Accounts</li>
-              <li class="menu-item">Checking Accounts</li>
-              <li class="menu-item">Find a credit card</li>
-              <li class="menu-item">Home Lending</li>
-              <li class="menu-item">Car Buying & Loans</li>
-              <li class="menu-item">Chase for Business</li>
-              <li class="menu-item">Chase Private Client</li>
-              <li class="menu-item">Invest</li>
-              <li class="menu-item">Free credit score</li>
+              <li class="menu-item"><a href="">Savings Accounts</a></li>
+              <li class="menu-item"><a href="">Checking Accounts</a></li>
+              <li class="menu-item"><a href="">Find a credit card</a></li>
+              <li class="menu-item"><a href="">Home Lending</a></li>
+              <li class="menu-item"><a href="">Car Buying & Loans</a></li>
+              <li class="menu-item"><a href="">Chase for Business</a></li>
+              <li class="menu-item"><a href="">Chase Private Client</a></li>
+              <li class="menu-item"><a href="">Invest</a></li>
+              <li class="menu-item"><a href="">Free credit score</a></li>
           <button type="button" class="left-button">></button>
         </div>
       </div>
+
+      <!-- Three Learn more items -->
+      <div id="three-learn-more">
+        <div class="learn-more">
+          <a href="">
+            <img class="learn-more-img" src="" alt="Get up to $350 on us">
+            <div class="learn-more-info"><p class="title">For new Chase customers</p><p class="learn-more-content">Get up $350 when you open a Chase Total Checking account and Chase Savings account with qualifying activities.</p></div>
+            <button class="learn-more-button blue" type="button">Learn more</button>
+          </a>
+        </div>
+        <div class="learn-more">
+          <a href="">
+            <img class="learn-more-img" src="" alt="Home owners">
+            <div class="learn-more-info"><p class="title">Making a home change?</p><p class="learn-more-content">Start a relationship with a Home Lending advisor to personalize a plan that's right for you.</p></div>
+            <button class="learn-more-button blue" type="button">Learn more</button>
+          </a>
+        </div>
+        <div class="learn-more">
+          <a href="">
+            <img class="learn-more-img" src="" alt="Get up to $350 on us">
+            <div class="learn-more-info"><p class="title">Save money on a new car</p><p class="learn-more-content">Chase customers save an average of $3,086 off MSRP on new cars with Chase Car Buying Service.</p></div>
+            <button class="learn-more-button blue" type="button">Learn more</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Individual learn more item -->
+      <div class="individual-learn-more">
+        <div class="learn-more">
+          <a href="">
+            <img class="learn-more-img" src="" alt="Chase credit card">
+            <div class="learn-more-info">Get $200 on us <p>New Business Checking clients get $200 by opening a Chase Total Business Checking account with qualifiying activites.</p></div>
+            <button class="learn-more-button green" type="button">Learn more</button>
+          </a>
+        </div>
+      </div>
+      <div class="individual-learn-more">
+        <div class="learn-more">
+          <a href="">
+            <img class="learn-more-img" src="" alt="Chase QuickPay app">
+            <div class="learn-more-info">Chase QuickPay is better together with Zelle <p>Now you can send money faster to virtually anyone - even friends who don't bank with chase</p></div>
+            <button class="learn-more-button green" type="button">Learn more</button>
+        </a>
+        </div>
+      </div>
+      <div class="individual-learn-more">
+        <div class="learn-more">
+          <a href="">
+            <img class="learn-more-img" src="" alt="Get up to $350 on us">
+            <div class="learn-more-info">So Many Ways To Pay <p>With Chase Pay, you can pay at the register, online, and even when your order ahead!</p></div>
+            <button class="learn-more-button green" type="button">Learn more</button>
+          </a>
+        </div>
+      </div>
+
+      <div id="news">
+        <p class="title">News & Stories</p>
+        <div class="social-media right">Follow us:
+          <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="news-content">
+          <a class="news-story" href="#">
+            <img class="news-image" src="" alt="People ordering food">
+            <p>Here's why ordering food just got easier</p>
+          </a>
+        </div>
+
+      </main>
+
 
   </body>
 </html>

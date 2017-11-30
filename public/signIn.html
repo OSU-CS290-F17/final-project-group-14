@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<!-- NOTE: this is the home page and is only the html and is not templitized, I am just making an initial structure, names of class will be the same after templatization -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chase Bank - Credit Card, Mortgage, Auto, Banking Services</title>
+
+    <!-- stylesheets -->
+    <!--Insert Fonts-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- runtime handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.runtime.js" charset="utf-8" defer></script>
+    <!-- Insert compiled handlebars -->
+
+    <script src="/index.js" charset="utf-8" defer></script>
+  </head>
+
+  <body>
+    <img class="header-background" src="https://images.fineartamerica.com/images-medium-large-5/lake-winnepasaukee-canoe-skip-willits.jpg" alt="background image">
+    <header>
+      <!-- Navagation bar: left has alternate menu, middle is the name of company,
+            right has the search bar and sign in button when past the header div -->
+      <nav class="navbar">
+        <ul class="navlist">
+          <li class="navitem navmenu"><i class="fa fa-bars" aria-hidden="true"></i></li>
+          <li class="navitem middle">CHASE</li>
+          <li class="navitem right"><a href="#"><button type="button">Sign in</button></a></li>
+          <li class="navitem right"><i class="fa fa-search" aria-hidden="true"></i></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="sign-in-box">
+      <div class="login-body">
+        <div class="login-username">
+          <label for="username">Username</label>
+          <input type="text" id="username"></input>
+        </div>
+
+        <div class="login-password">
+          <label for="password">Password</label>
+          <input type="password" id="password"></input>
+        </div>
+      </div>
+
+      <div class="login-footer">
+        <button type="button" id="login">Sign in</button>
+        <a id="update-account" class="login-help" href="#">Forgot username/password? ></a>
+        <a id="sign-up" class="login-help" href="#">Not enrolled? Sign up now. ></a>
+      </div>
+    </div>
+
+    <div class="social-media right">Follow us:
+      <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+    </div>
+
+
+  </body>
+</html>
