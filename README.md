@@ -20,18 +20,18 @@ JS     | HTML    | CSS   | MISC
 - [ ] HTML
   - [ ] Layout
     - [ ] Main
-      - [ ] link stylesheet
+      - [x] link stylesheet
       - [ ] link necessary templates
-      - [ ] include handlebars runtime
-      - [ ] include index.js
+      - [x] include handlebars runtime
+      - [x] include index.js
       - [ ] include other elements
   - [ ] Partials
     - [ ] Account Event (for activity page. ex Deposit of $20)
-    - [ ] Header
+    - [x] Header
     - [ ] Footer (optional)
     - [ ] Account Info (for accounts page)
-  - [ ] Accounts Page
-  - [ ] Account Activity Page
+  - [ ] Accounts Page & Activity
+  - [ ] Transfer Page
   - [ ] Login (optional)
 
 - [ ] Java Script

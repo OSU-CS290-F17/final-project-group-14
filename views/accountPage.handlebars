@@ -1,0 +1,40 @@
+{{>globalHeader}}
+
+{{>accountHeader}}
+
+<aside id="overview">
+  <div class="overview-title">TOTAL CHECKING</div>
+  <div class="acc-balance bottom-right">Some database value</div>
+  <p class="acc-balance-label">Available balance</p>
+</aside>
+
+<div id="account">
+  <div class="acc-info">
+    <div class="overview-title">TOTAL CHECKING</div>
+    <p class="acc-balance-label">Available balance</p>
+    <div class="acc-balance">Some database value</div>
+  </div>
+
+  <div class="acc-transactions">
+    <div class="transaction-header">
+      <div class="transaction-filter-container">
+        <div class="transaction-view">Showing</div>
+        <label for="transaction-filter-type">Transaction</label>
+        <select id="transaction-filter-type" class="transaction-filter-input" name="transaction-filter-type">
+          <option selected value="">Any Transaction</option>
+          <option>idk</option>
+          <option>idk</option>
+      </div>
+    </div>
+
+    <div class="transaction-table">
+      <table class="acc-history-table">
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance</th>
+        </tr>
+      </table>
+    </div>
