@@ -1,0 +1,53 @@
+{{>globalHeader}}
+
+{{>accountHeader}}
+
+<div class="transfer-from">
+  <p class="transfer-title">Transfer from</p>
+
+  <label for="transfer-from-acc">Transaction</label>
+  <select id="transfer-from-acc" class="transfer-from-input" name="transfer-from-acc">
+    <option selected value="">Choose an account</option>
+    <!--check if user has checking or savings based off database -->
+    <option>checking</option>
+    <option>savings</option>
+  </select>
+</div>
+
+<div class="transfer-to">
+  <p class="transfer-title">Transfer from</p>
+
+  <label for="transfer-to-acc">Transfer</label>
+  <select id="transfer-to-acc" class="transfer-from-input" name="transfer-to-acc">
+    <option selected value="">Choose an account</option>
+    <!--check if user has checking or savings based off database -->
+    <option>checking</option>
+    <option>savings</option>
+  </select>
+</div>
+
+<div class="transfer-to">
+  <p class="transfer-title">Transfer from</p>
+
+  <label for="transfer-from-acc">Transfer</label>
+  <select id="transfer-from-acc" class="transfer-from-input" name="transfer-from-acc">
+    <option selected value="">Choose an account</option>
+    <!--check if user has checking or savings based off database and what was shown before should show the opposing bank account-->
+    <option>checking</option>
+    <option>savings</option>
+  </select>
+</div>
+
+<div class="transfer-amount">
+  <p class="transfer-title">Amount</p>
+
+  <label for="transfer-amount-input">Transfer</label>
+  <input type="number" id="transfer-amount-input">$</input>
+
+  <!--Add memo??-->
+</div>
+
+<div class="transfer-footer">
+  <a href="/"><button class="transfer-cancel" type="button">Cancel</button></a>
+  <a href="/"><button class="transfer-accept" type="button">Accept</button></a>
+</div>
