@@ -1,8 +1,12 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
+.hidden {
+  display: none;
+}
 .navbar{
   position: fixed;
   height: 70px;
@@ -13,6 +17,10 @@
   top: 0;
   left: 0;
   z-index: 100;
+}
+
+.nav-dark {
+  background: rgba(8,70,168,0.9);
 }
 
 .navitem {
@@ -131,7 +139,8 @@
 .title {
   width: 100%;
   text-align: center;
-  font-size: 2em;
+  font-size: 2.3em;
+  font-weight: lighter;
 }
 
 .menu-items button{
@@ -139,37 +148,56 @@
   display: inline-block;
   width: 50px;
   height: 50px;
-  margin: 40px 25px;
+  margin: 30px 25px;
   border: none;
   background: none;
   font-size: 34px;
 
 }
 .carousel {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  display: block;
   min-width: 200px;
-  flex-basis: 1;
+
   padding: 0;
   margin: 0;
   display: inline-block;
   width: calc(100% - 210px);
-  background: rgba(0,0,0, .3);
   height: 100px;
 }
 
 .menu-item {
-  flex: 1;
-  height: 100px;
-  background: rgba(0,0,0, .5);
+  position: relative;
+  height: 100%;
   text-align: center;
   display: none;
+
+}
+.menu-item:hover{
+  cursor: pointer;
+}
+.menu-item img{
+  position: relative;
+  top: 5px;
+  height: 55px;
+}
+.menu-item a{
+  position: absolute;
+  bottom: 5px;
+  font-size: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #126bc5;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .active{
   flex: 1;
   float: left;
   display: inline-block;
+}
+
+#savings {
+  content: "\e60e";
 }
