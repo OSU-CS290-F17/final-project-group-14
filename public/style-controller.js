@@ -11,10 +11,10 @@ Notes for integration
 
 var navState = 0;
 var currentCarousel = 0;
+var carouselElems = [];
 document.addEventListener("DOMContentLoaded", function(){
-  document.getElementById('main-carousel');
-  spaceCarousel();
-  buildIndicators();
+  initCarousel();
+
   window.addEventListener('resize', function(){
     if(!activeSizeSafe()) fixActives();
   });
@@ -24,14 +24,29 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 });
+function initCarousel(){
+  var c = document.getElementById('main-carousel');
+  var children = c.childNodes;
+  for(var i = 0; i < children.length; i++){
+    if(children[i].tagName == 'DIV')
+      carouselElems.push(children[i]);
+  }
+  console.log(carouselElems);
 
+  while (c.hasChildNodes()) {
+      c.removeChild(c.lastChild);
+  }
+  buildIndicators();
+
+
+}
 function buildIndicators(){
-  var items = document.getElementsByClassName('menu-item');
-  var amount = items.length;
+
+  var amount = carouselElems.length;
   var holder = document.getElementById('carousel-indicators');
 
   for(var i = 0; i < amount; i++){
-    items[i].id = 'item...'+i; //should make all unique
+    carouselElems[i].id = 'item...'+i; //should make all unique
     var indicator = document.createElement('div');
     indicator.id='indicator...'+ i;
     indicator.dataset.i = i;
@@ -46,15 +61,11 @@ function buildIndicators(){
 }
 
 function slideTo(id){
-  console.log(currentCarousel)
-  console.log(document.getElementById('indicator...'+currentCarousel))
   document.getElementById('indicator...'+currentCarousel).classList.remove('selected');
-  console.log(id);
-  console.log(document.getElementById('indicator...'+id))
   document.getElementById('indicator...'+id).classList.add('selected');
   currentCarousel = id;
   var center = [parseInt(id)];
-  var amount = document.getElementsByClassName('active').length;
+  var amount = elementAmount();
   var right = [];
   var left = [];
   for(var i = 0; i < Math.floor(amount / 2); i++){
@@ -64,13 +75,38 @@ function slideTo(id){
 
   var order = left.concat(center.concat(right));
   console.log(order);
+  for(var i = 0; i < order.length; i++){
+    if(order[i] < 0){
+      order[i] = carouselElems.length + order[i]
+    }
+    if(order > carouselElems.length - 1){
+      order[i] = order[i] - carouselElems.length;
+    }
+  }
+  console.log(order);
   //Convert to actual indexes,
   //Make visible in this order
 
   /*
     Might need to remove from DOM to get correct order
   */
+  displayCarouselElems(order);
+}
+function displayCarouselElems(els){
+  var c = document.getElementById('main-carousel');
+  w = 100/els.length;
+  for(var i = 0; i < els.length; i++){
+    var temp = carouselElems[els[i]];
+    temp.classList.add('active');
+    temp.style.width = w + '%'; 
+    document.getElementById('main-carousel').appendChild(temp);
+  }
+}
+function elementAmount(){
+  var w = window.getComputedStyle(document.getElementById('main-carousel')).width.replace("px", "");
+  console.log(w);
 
+  return Math.floor(w/170);
 }
 function switchNavBar(loc) {
   if(navState == 0 && loc > 360){
@@ -112,6 +148,7 @@ function fixActives(){
   }
   spaceCarousel();
 }
+
 
 
 function activeSizeSafe(){
