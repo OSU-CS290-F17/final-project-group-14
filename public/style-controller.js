@@ -53,7 +53,7 @@ function slideTo(id){
   console.log(document.getElementById('indicator...'+id))
   document.getElementById('indicator...'+id).classList.add('selected');
   currentCarousel = id;
-  var center = [id];
+  var center = [parseInt(id)];
   var amount = document.getElementsByClassName('active').length;
   var right = [];
   var left = [];
@@ -61,8 +61,9 @@ function slideTo(id){
     right[i] = parseInt(center) + 1 + i;
     left[i] = parseInt(center) - 1 - i;
   }
-  console.log(left.reverse(), center, right)
+
   var order = left.concat(center.concat(right));
+  console.log(order);
   //Convert to actual indexes,
   //Make visible in this order
 
