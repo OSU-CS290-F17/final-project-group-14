@@ -21,9 +21,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
   window.addEventListener('scroll', function(){
       switchNavBar(scrollY);
-    });
+  });
+
+  document.getElementById('carousel-right').addEventListener('click', function(){
+    slideRight();
+  })
+
+  document.getElementById('carousel-left').addEventListener('click', function() {
+    slideLeft();
+  })
 
 });
+
+
 function initCarousel(){
   var c = document.getElementById('main-carousel');
   var children = c.childNodes;
@@ -33,12 +43,17 @@ function initCarousel(){
   }
   console.log(carouselElems);
 
+  clearCarousel();
+  buildIndicators();
+  slideTo(currentCarousel)
+}
+
+function clearCarousel(){
+  var c = document.getElementById('main-carousel');
+
   while (c.hasChildNodes()) {
       c.removeChild(c.lastChild);
   }
-  buildIndicators();
-
-
 }
 function buildIndicators(){
 
@@ -55,9 +70,9 @@ function buildIndicators(){
   }
   holder.addEventListener('click', function(e){
     target = e.target;
-    slideTo(target.dataset.i)
+    if(target.dataset.i) //if it is avaiable as a carousel element
+      slideTo(target.dataset.i)
   })
-  slideTo(currentCarousel);
 }
 
 function slideTo(id){
@@ -73,40 +88,51 @@ function slideTo(id){
     left[i] = parseInt(center) - 1 - i;
   }
 
-  var order = left.concat(center.concat(right));
-  console.log(order);
+  var order = left.reverse().concat(center.concat(right));
+
   for(var i = 0; i < order.length; i++){
     if(order[i] < 0){
       order[i] = carouselElems.length + order[i]
     }
-    if(order > carouselElems.length - 1){
+    if(order[i] > carouselElems.length - 1){
       order[i] = order[i] - carouselElems.length;
+      console.log(order[i])
     }
   }
   console.log(order);
-  //Convert to actual indexes,
-  //Make visible in this order
-
-  /*
-    Might need to remove from DOM to get correct order
-  */
   displayCarouselElems(order);
 }
+
+function slideRight(){
+  var loc = currentCarousel + 1;
+  loc %= carouselElems.length;
+  console.log(loc);
+  slideTo(loc);
+}
+
+function slideLeft(){
+  var loc = currentCarousel - 1;
+  if(loc < 0){
+    loc += carouselElems.length;
+  }
+  slideTo(loc);
+}
 function displayCarouselElems(els){
+  clearCarousel();
   var c = document.getElementById('main-carousel');
   w = 100/els.length;
   for(var i = 0; i < els.length; i++){
     var temp = carouselElems[els[i]];
     temp.classList.add('active');
-    temp.style.width = w + '%'; 
+    temp.style.width = w + '%';
     document.getElementById('main-carousel').appendChild(temp);
   }
 }
 function elementAmount(){
   var w = window.getComputedStyle(document.getElementById('main-carousel')).width.replace("px", "");
-  console.log(w);
 
-  return Math.floor(w/170);
+  var amount = Math.floor(w/170);
+  return (amount < 5) ? 3 : 5;
 }
 function switchNavBar(loc) {
   if(navState == 0 && loc > 360){
