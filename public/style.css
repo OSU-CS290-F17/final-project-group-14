@@ -191,7 +191,24 @@
   text-decoration: none;
   font-weight: 600;
 }
+#carousel-indicators{
+  display: block;
+  width: 230px;
+  position: relative;
+  left: calc(50% - 115px);
+}
+.indicator{
+  margin: 0 7.5px;
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border: 1px black solid;
+  border-radius: 100%;
+}
 
+.selected {
+  background: #126bc5;
+}
 .active{
   flex: 1;
   float: left;
