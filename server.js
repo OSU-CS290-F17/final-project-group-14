@@ -25,6 +25,11 @@ app.get('/signIn', function (req, res) {
   res.status(200).render('signIn');
 });
 
+//signUp page
+app.get('/signUp', function (req, res) {
+  res.status(200).render('signUp')
+});
+
 // accountPage
 app.get('/accountPage', function (req, res) {
   res.status(200).render('accountPage');
@@ -39,4 +44,3 @@ app.get('*', function (req, res) {
 
 app.listen(port, function () {
   console.log("== Server is listening on port", port);
-});
