@@ -7,6 +7,9 @@ function login () {
     var getRequest = new XMLHttpRequest();
     var getURL = "/accountPage/" + username;
     getRequest.open('GET', getURL);
+
+    //add error handleing
+
     getRequest.send();
   }
 }
@@ -44,12 +47,12 @@ function signUp() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-  var login = document.getElementById('login');
-  loginAttempt.addEventListener('click', login);
+  var loginButton = document.getElementById('login');
+  if(loginButton) {loginButton.addEventListener('click', login); }
 
-  var signUp = document.getElementById('sign-up');
-  signUp.addEventListener('click', signUp)
+  var signUpButton = document.getElementById('sign-up');
+  if(signUpButton) { signUpButton.addEventListener('click', signUp) }
 
 });
