@@ -19,6 +19,15 @@
   z-index: 100;
 }
 
+.login-header{
+  width: 100%;
+  height: 740px;
+  overflow: hidden;
+}
+
+.img-fill{
+  width: 100%
+}
 .nav-dark {
   background: rgba(8,70,168,0.9);
 }
@@ -334,6 +343,7 @@
 
 
 .social-media{
+  margin-top: 10px;
   width: 400px;
   height: 40px;
   position: relative;
@@ -370,4 +380,93 @@
 .green {
   background: #128842;
   color: white;
+}
+
+#sign-up-box, #sign-in-box{
+  display: block;
+  width: 340px;
+  height: auto;
+  background: rgba(255, 255, 255, .9);
+  position: absolute;
+  left: calc(50% - 195px);
+  top: 160px;
+  border-radius: 5px;
+  padding: 20px 25px;
+}
+
+.login-body{
+  width: 100%;
+  padding: 12px 0;
+}
+
+.login-username label{
+  display: none;
+}
+.login-input{
+  background: none;
+  padding: 0 5px;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: lighter;
+}
+
+.login-input:focus{
+  width: calc(100% - 32px);
+  height: calc(40px - 3px);
+  border: 1px #126bc5 solid;
+  border-bottom-width: 2px;
+
+}
+.login-default{
+  height: 39px;
+  padding: 0 5px;
+  width: calc(100% - 30px);
+  border: none;
+  border-bottom: 1px rgba(0,0,0, .3) solid;
+}
+
+.no-value{
+  width: calc(100% - 34px);
+  height: 36px;
+  border: 2px #BF2155 solid;
+}
+
+.login{
+  margin: 10px 0;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.login-help{
+  font-size: 14px;
+  text-decoration: none;
+  color : #126BC5;
+}
+
+.error-404{
+  position: absolute;
+  top: 100px;
+  left: 30%;
+  width: 40%;
+  height: auto;
+  text-align: center;
+  font-weight: lighter;
+  background: rgba(255,255,255, .9);
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
+.error-404 h1{
+  font-weight: lighter;
+
+  font-size: 52px;
+}
+.error-404 h2{
+  font-weight: lighter;
+  font-size: 32px;
 }

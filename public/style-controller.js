@@ -13,6 +13,11 @@ var navState = 0;
 var currentCarousel = 0;
 var carouselElems = [];
 document.addEventListener("DOMContentLoaded", function(){
+  //Darken navbar on 404
+  if(document.getElementsByClassName('error-404').length > 0){
+    document.getElementById('navbar').classList.add('nav-dark')
+  }
+
   //Binds carousel events if it exists.
   if(document.getElementById('main-carousel')){
     initCarousel();
@@ -28,14 +33,39 @@ document.addEventListener("DOMContentLoaded", function(){
       slideTo(currentCarousel);
     });
   }
+  if(document.getElementsByClassName('login-input').length > 0){
+    initTextBoxes();
 
+  }
 
   window.addEventListener('scroll', function(){
+    if(document.getElementsByClassName('error-404').length == 0)
       switchNavBar(scrollY);
+
   });
 
 });
 
+function initTextBoxes(){
+  var textBoxes =document.getElementsByClassName('login-input');
+  for(var i = 0; i < textBoxes.length; i++){
+    textBoxes[i].classList.add('login-default')
+    textBoxes[i].addEventListener('focusout', function(e){
+      var box = e.target;
+      if(!box.value){
+        box.classList.remove('login-default');
+        box.classList.add('no-value');
+
+      }else {
+        box.classList.add('login-default');
+      }
+    });
+
+    textBoxes[i].addEventListener('focus', function(e){
+      e.target.classList.remove('no-value');
+    });
+  }
+}
 
 function initCarousel(){
   var c = document.getElementById('main-carousel');
