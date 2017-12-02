@@ -57,12 +57,12 @@ app.get('/accountPage', function (req, res) {
   res.status(200).render('accountPage');
 });
 
-app.post('/signUp/addAccount', function (req, res) {
+app.post('/newAccount/:username', function (req, res) {
 
-  if (req.body && req.body.username) {
+  if (req.body && req.body.username && req.body.address) {
     var accountObj = {
       username: req.body.username,
-
+      address: req.body.address,
     };
 
     dataCollection.insert( accountObj );
