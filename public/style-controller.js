@@ -13,23 +13,26 @@ var navState = 0;
 var currentCarousel = 0;
 var carouselElems = [];
 document.addEventListener("DOMContentLoaded", function(){
-  initCarousel();
+  //Binds carousel events if it exists.
+  if(document.getElementById('main-carousel')){
+    initCarousel();
 
-  window.addEventListener('resize', function(){
-    slideTo(currentCarousel);
-  });
+    document.getElementById('carousel-right').addEventListener('click', function(){
+      slideRight();
+    })
+
+    document.getElementById('carousel-left').addEventListener('click', function() {
+      slideLeft();
+    })
+    window.addEventListener('resize', function(){
+      slideTo(currentCarousel);
+    });
+  }
+
 
   window.addEventListener('scroll', function(){
       switchNavBar(scrollY);
   });
-
-  document.getElementById('carousel-right').addEventListener('click', function(){
-    slideRight();
-  })
-
-  document.getElementById('carousel-left').addEventListener('click', function() {
-    slideLeft();
-  })
 
 });
 
