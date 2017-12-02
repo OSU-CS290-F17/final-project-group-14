@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
   initCarousel();
 
   window.addEventListener('resize', function(){
-    if(!activeSizeSafe()) fixActives();
+    slideTo(currentCarousel);
   });
 
   window.addEventListener('scroll', function(){
