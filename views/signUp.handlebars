@@ -1,15 +1,19 @@
 {{>globalHeader}}
 
+<div class="image-wrapper login-header">
+  <img class="img-fill" src="https://images.fineartamerica.com/images-medium-large-5/lake-winnepasaukee-canoe-skip-willits.jpg" alt="background image">
+</div>
+
 <div id="sign-up-box">
   <div class="login-body">
     <div class="login-username">
-      <label for="username">Username</label>
-      <input type="text" id="username"></input>
+      <label for="username" class='hidden'>Username</label>
+      <input type="text" class='login-input' placeholder="Username" id="username"></input>
     </div>
 
     <div class="login-address">
-      <label for="address">Address</label>
-      <input type="text" id="address"></input>
+      <label for="address" class='hidden'>Address</label>
+      <input type="text" class='login-input'placeholder="Address" id="address"></input>
     </div>
   </div>
 
@@ -17,6 +21,7 @@
     <button type="button" id="sign-up" class="login">Sign up</button>
   </div>
 </div>
+
 
 {{>socialMedia}}
 
