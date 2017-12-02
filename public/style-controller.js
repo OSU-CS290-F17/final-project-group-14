@@ -28,7 +28,23 @@ document.addEventListener("DOMContentLoaded", function(){
       slideTo(currentCarousel);
     });
   }
-
+  if(document.getElementById('username')){
+    document.getElementById('sign-in-header').classList.add('hidden')
+    document.getElementById('username').classList.add('username-default')
+    document.getElementById('username').addEventListener('focusout', function(){
+      var u = document.getElementById('username');
+      console.log("adding class")
+      if(!u.value){
+        u.classList.remove('username-default')
+        u.classList.add('no-username');
+      }else{
+        u.classList.add('username-default')
+      }
+    })
+    document.getElementById('username').addEventListener('focus', function(){
+      document.getElementById('username').classList.remove('no-username');
+    })
+  }
 
   window.addEventListener('scroll', function(){
       switchNavBar(scrollY);
