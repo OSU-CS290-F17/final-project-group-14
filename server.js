@@ -49,16 +49,31 @@ app.get('/signUp', function (req, res) {
 app.get('/:user/accountPage/', function (req, res) {
 	var collection = mongoConnection.collection('final');
 	collection.find({username: req.params.user}).toArray(function (err, results) {
-    if (err) {
-      res.status(500).send("Database Error");
+  if (err) {
+    res.status(500).send("Database Error");
     } else if (results.length > 0) {
-		console.log(results[0]);
+		  console.log(results[0]);
       res.status(200).render('accountPage', results[0]);
     } else {
       res.status(200).render('signIn',{noUser:true});
     }
 	});
 });
+
+app.get('/:user/accountTransfer/', function (req, res) {
+	var collection = mongoConnection.collection('final');
+	collection.find({username: req.params.user}).toArray(function (err, results) {
+  if (err) {
+    res.status(500).send("Database Error");
+    } else if (results.length > 0) {
+		  console.log(results[0]);
+      res.status(200).render('accountTransfer', results[0]);
+    } else {
+      res.status(200).render('signIn',{noUser:true});
+    }
+	});
+});
+
 /*
 app.get('/:username/accountPage', function (req, res) {
   var dataCollection = mongoConnection.collection('accountData')
@@ -94,6 +109,22 @@ app.post('/newAccount/addAccount', function (req, res) {
 
     dataCollection.insert( accountObj );
     res.status(200).send("success");
+  } else {
+    res.status(400).send("Request body needs a 'username' field");
+  }
+});
+
+app.post('/:user/accountChange', function (req, res) {
+  console.log("Check");
+  var dataCollection = mongoConnection.collection('accountData')
+  console.log(req.body.account);
+  if (req.body && req.body.account && req.body.transaction && req.body.amount) {
+    var d = new Date();
+    var checkingsObj = {date: d.toDateString(), description: req.body.transaction, amount: req.body.amount};
+
+    dataCollection.updateOne({username:req.params.user},{checkings:checkingsObj});
+    res.status(200).send("success");
+    console.log("Check 2");
   } else {
     res.status(400).send("Request body needs a 'username' field");
   }

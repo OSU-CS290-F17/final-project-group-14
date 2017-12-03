@@ -1,9 +1,9 @@
-{{>globalHeader}}
+{{!--{{>globalHeader}}--}}
 
 {{>accountHeader}}
 
 <div id="transaction">
-  <h2>Depoist and Withdrawl</h2>
+  <h2>Deposit and Withdrawl</h2>
 
   <div class="transaction-account">
     <p>Add/Subtract from</p>
@@ -35,7 +35,7 @@
   </div>
 
   <div class="transfer-footer">
-    <a href="/"><button class="transfer-accept" type="button">Accept</button></a>
+    <button id="changeAmount" class="transfer-accept" type="button">Accept</button>
   </div>
 </div>
 
@@ -75,6 +75,6 @@
   </div>
 
   <div class="transfer-footer">
-    <a href="/"><button class="transfer-accept" type="button">Accept</button></a>
+    <a href="/"><button id="transfer" class="transfer-accept" type="button">Accept</button></a>
   </div>
 </div>
