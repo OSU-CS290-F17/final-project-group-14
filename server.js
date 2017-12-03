@@ -46,7 +46,7 @@ app.get('/signUp', function (req, res) {
 });
 
 // accountPage
-app.get('/accountPage/:user', function (req, res) {
+app.get('/:user/accountPage/', function (req, res) {
 	var collection = mongoConnection.collection('final');
 	collection.find({username: req.params.user}).toArray(function (err, results) {
     if (err) {
