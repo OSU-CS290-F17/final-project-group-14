@@ -43,7 +43,9 @@ document.addEventListener("DOMContentLoaded", function(){
       switchNavBar(scrollY);
 
   });
-
+  if(document.getElementById('overview')){
+    document.body.style.background = "#f7f6f3";
+  }
 });
 
 function initTextBoxes(){
