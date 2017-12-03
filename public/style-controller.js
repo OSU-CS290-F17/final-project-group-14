@@ -12,6 +12,7 @@ Notes for integration
 var navState = 0;
 var currentCarousel = 0;
 var carouselElems = [];
+var accountSelected = 0;
 document.addEventListener("DOMContentLoaded", function(){
   //Darken navbar on 404
   if(document.getElementsByClassName('error-404').length > 0){
@@ -46,8 +47,31 @@ document.addEventListener("DOMContentLoaded", function(){
   if(document.getElementById('overview')){
     document.body.style.background = "#f7f6f3";
   }
+  if(document.getElementById('overview')){
+    focusAccount(document.getElementById('checking-acc-card'))
+    document.getElementById('overview').addEventListener('click', function(e){
+      console.log(e.path)
+      var cur;
+      //Find the correct div
+      for(var i = 0; i < e.path.length; i++){
+        cur = e.path[i];
+        if(cur.tagName == "ASIDE" && i > 0){
+          cur = e.path[i-1]
+          break;
+        }
+      }
+      if(cur.tagName=="DIV")
+        focusAccount(cur);
+    })
+  }
 });
-
+function focusAccount(node){
+  console.log(node);
+  if(accountSelected != 0)
+    accountSelected.classList.remove('focused-account')
+  node.classList.add('focused-account');
+  accountSelected = node
+}
 function initTextBoxes(){
   var textBoxes =document.getElementsByClassName('login-input');
   for(var i = 0; i < textBoxes.length; i++){
