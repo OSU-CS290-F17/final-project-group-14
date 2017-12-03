@@ -55,4 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var signUpButton = document.getElementById('sign-up');
   if(signUpButton) { signUpButton.addEventListener('click', signUp) }
 
+  if(!document.querySelector('.home-page')) {document.getElementById('sign-in-header').classList.add('hidden'); } //only displays the sign in button in the header on the home page
+
 });
