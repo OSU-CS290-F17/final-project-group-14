@@ -37,7 +37,6 @@ app.get('/', function (req, res) {
 
 // signIn page
 app.get('/signIn', function (req, res) {
-  console.log("lol");
   res.status(200).render('signIn');
 });
 
@@ -47,18 +46,35 @@ app.get('/signUp', function (req, res) {
 });
 
 // accountPage
+app.get('/:user/accountPage/', function (req, res) {
+	var collection = mongoConnection.collection('final');
+	collection.find({username: req.params.user}).toArray(function (err, results) {
+    if (err) {
+      res.status(500).send("Database Error");
+    } else if (results.length > 0) {
+		console.log(results[0]);
+      res.status(200).render('accountPage', results[0]);
+    } else {
+      res.status(200).render('signIn',{noUser:true});
+    }
+	});
+});
+/*
 app.get('/:username/accountPage', function (req, res) {
   var dataCollection = mongoConnection.collection('accountData')
   dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
     if (err){
       res.status(500).send("Error fetching account data");
-    }else if (results > 0) {
+    }else if (results.length > 0) {
       res.status(200).render('accountPage', {
         account: results
       });
+    } else {
+      alert("Invalid username");
     }
   })
 });
+*/
 
 app.post('/newAccount/addAccount', function (req, res) {
   var dataCollection = mongoConnection.collection('accountData')
@@ -98,4 +114,4 @@ MongoClient.connect(mongoURL, function (err, connection) {
   app.listen(port, function () {
     console.log("== Server is listening on port", port);
   });
-})
+});

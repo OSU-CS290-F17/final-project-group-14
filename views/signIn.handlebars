@@ -4,8 +4,14 @@
 {{>globalHeader}}
 
 <div id="sign-in-box">
+	{{#if noUser}}
+		<label>Username not found.</label>
+	{{/if}}
   <div class="login-body">
     <div class="login-username">
+		{{#if noUser}}
+			<label>Username not found.</label>
+		{{/if}}
       <label for="username" class='hidden'>Username</label>
       <input type="text" placeholder="Username" class='login-input' id="username"></input>
     </div>
