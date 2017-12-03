@@ -10,13 +10,14 @@ JS     | HTML    | CSS   | DB
 
 ## TO DO
 - [ ] CSS
-  - [ ] Header
-  - [ ] Basic Page Layout
-  - [ ] Color Scheme
-  - [ ] Fonts
+  - [X] Header
+  - [X] Basic Page Layout
+  - [X] Color Scheme
+  - [X] Fonts
   - [ ] Activity Page Style
-  - [ ] Login Style (optional)
-
+  - [X] Login Style (optional)
+  - [X] Home Page
+    - [X] Carousel
 - [ ] HTML
   - [ ] Layout
     - [ ] Main
