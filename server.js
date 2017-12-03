@@ -35,8 +35,18 @@ app.get('/signUp', function (req, res) {
 });
 
 // accountPage
-app.get('/accountPage', function (req, res) {
-  res.status(200).render('accountPage');
+app.get('/accountPage/:user', function (req, res) {
+	var collection = mongoConnection.collection('final');
+	collection.find({username: req.params.user}).toArray(function (err, results) {
+    if (err) {
+      res.status(500).send("Database Error");
+    } else if (results.length > 0) {
+		console.log(results[0]);
+      res.status(200).render('accountPage', results[0]);
+    } else {
+      res.status(200).render('signIn',{noUser:true});
+    }
+	});
 });
 
 app.use(express.static('public'));
@@ -55,3 +65,13 @@ MongoClient.connect(mongoURL, function (err, connection) {
     console.log("== Server listening on port:", port);
   });
 });
+
+// Pass in mongoConnection and the query wrapped in brackets: {}.
+function findDocuments(db, query) {
+  var collection = db.collection('final');
+  return collection.find(query).toArray(function(err, docs) {
+    console.log("Found the following records");
+    console.log();
+	return docs;
+  });
+}

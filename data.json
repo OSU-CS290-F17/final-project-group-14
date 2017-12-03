@@ -1,0 +1,16 @@
+{
+	"username": "test",
+	"address": "123 1st Street",
+	"accounts": {
+		"checkings": {
+			"date": "12/2/2017",
+			"description": "Withdraw",
+			"amount": "200"
+		},
+		"savings": {
+			"date": "12/2/2017",
+			"description": "Deposit",
+			"amount": "50"
+		}
+	}
+}

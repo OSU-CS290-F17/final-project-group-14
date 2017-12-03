@@ -4,13 +4,21 @@ function login () {
   if(!username) {
     alert("Enter a username."); //Maybe make a better error message?
   } else {
+	  window.location.href = "/accountPage/" + username;
+	  /*
     var getRequest = new XMLHttpRequest();
     var getURL = "/accountPage/" + username;
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("demo").innerHTML = this.responseText;
+		}
+    };
     getRequest.open('GET', getURL);
 
     //add error handleing
 
     getRequest.send();
+	*/
   }
 }
 
