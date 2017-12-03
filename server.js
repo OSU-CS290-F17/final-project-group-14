@@ -12,8 +12,7 @@ var mongoUser = process.env.MONGO_USER;
 var mongoPassword = process.env.MONGO_PASSWORD;
 var mongoDBName = process.env.MONGO_DB;
 
-var mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword +
-  '@' + mongoHost;
+var mongoURL = "mongodb://cs290_wilsosam:cs290_wilsosam@classmongo.engr.oregonstate.edu:27017/cs290_wilsosam";
 
 var mongoConnection = null;
 
@@ -46,6 +45,7 @@ app.get('/:username/accountPage', function (req, res) {
 
 // signIn page
 app.get('/signIn', function (req, res) {
+  console.log("lol");
   res.status(200).render('signIn');
 });
 
