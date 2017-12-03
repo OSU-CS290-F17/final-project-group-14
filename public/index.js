@@ -4,7 +4,7 @@ function login () {
   if(!username) {
     alert("Enter a username."); //Maybe make a better error message?
   } else {
-	  window.location.href = "/accountPage/" + username;
+	  window.location.href = "/"+username+"/accountPage";
 	  /*
     var getRequest = new XMLHttpRequest();
     var getURL = "/accountPage/" + username;
