@@ -46,7 +46,6 @@ app.get('/signUp', function (req, res) {
 });
 
 // accountPage
-<<<<<<< HEAD
 app.get('/accountPage/:user', function (req, res) {
 	var collection = mongoConnection.collection('final');
 	collection.find({username: req.params.user}).toArray(function (err, results) {
@@ -59,7 +58,8 @@ app.get('/accountPage/:user', function (req, res) {
       res.status(200).render('signIn',{noUser:true});
     }
 	});
-=======
+});
+/*
 app.get('/:username/accountPage', function (req, res) {
   var dataCollection = mongoConnection.collection('accountData')
   dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
@@ -74,6 +74,7 @@ app.get('/:username/accountPage', function (req, res) {
     }
   })
 });
+*/
 
 app.post('/newAccount/addAccount', function (req, res) {
   var dataCollection = mongoConnection.collection('accountData')
@@ -96,7 +97,6 @@ app.post('/newAccount/addAccount', function (req, res) {
   } else {
     res.status(400).send("Request body needs a 'username' field");
   }
->>>>>>> origin/master
 });
 
 app.use(express.static('public'));
@@ -114,18 +114,4 @@ MongoClient.connect(mongoURL, function (err, connection) {
   app.listen(port, function () {
     console.log("== Server is listening on port", port);
   });
-<<<<<<< HEAD
 });
-
-// Pass in mongoConnection and the query wrapped in brackets: {}.
-function findDocuments(db, query) {
-  var collection = db.collection('final');
-  return collection.find(query).toArray(function(err, docs) {
-    console.log("Found the following records");
-    console.log();
-	return docs;
-  });
-}
-=======
-})
->>>>>>> origin/master
