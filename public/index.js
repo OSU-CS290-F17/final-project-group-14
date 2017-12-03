@@ -29,29 +29,29 @@ function signUp() {
   if(!username || !address) {
     alert("Enter all fields");
   } else {
-    var request = new XMLHttpRequest();
-    var postURL = "/newAccount/" + username;
-    request.open('POST', postURL);
+    var postRequest = new XMLHttpRequest();
+    var postURL = "/newAccount/addAccount";
+    postRequest.open('POST', postURL);
 
     //this object will be changed to correspond with the database
     var userObj = {
       username: username,
       address: address
     };
+    console.log(userObj);
     var requestBody = JSON.stringify(userObj);
-    request.setRequestHeader('Content-Type', 'application/json');
+    console.log(requestBody);
+    postRequest.setRequestHeader('Content-Type', 'application/json');
 
-    request.addEventListener('load', function(event) {
+    postRequest.addEventListener('load', function(event) {
       if(event.target.status !== 200) {
-        alert("Error storing photo in database:\n\n\n" + event.target.response);
+        alert("Error storing data in database:\n\n\n" + event.target.response);
       } else {
-        var getURL = "/signIn";
-        request.open('GET', getURL);
-        request.send();
+        window.location.href = "/signIn";
       }
     });
 
-    request.send();
+    postRequest.send(requestBody);
   }
 }
 
@@ -62,7 +62,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var signUpButton = document.getElementById('sign-up');
   if(signUpButton) { signUpButton.addEventListener('click', signUp) }
-
-  if(!document.querySelector('.home-page')) {document.getElementById('sign-in-header').classList.add('hidden'); } //only displays the sign in button in the header on the home page
 
 });

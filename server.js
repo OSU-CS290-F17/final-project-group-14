@@ -1,15 +1,25 @@
 var path = require('path');
 var express = require('express');
 var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
 
+var mongoHost = process.env.MONGO_HOST;
+var mongoPort = process.env.MONGO_PORT || 27017;
+var mongoUser = process.env.MONGO_USER;
+var mongoPassword = process.env.MONGO_PASSWORD;
+var mongoDBName = process.env.MONGO_DB;
+
 var mongoURL = "mongodb://cs290_wilsosam:cs290_wilsosam@classmongo.engr.oregonstate.edu:27017/cs290_wilsosam";
+
 var mongoConnection = null;
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+app.use(bodyParser.json());
 
 var port = process.env.PORT || 3000;
 
@@ -24,6 +34,7 @@ app.get('/', function (req, res) {
   res.status(200).render('homePage');
 });
 
+
 // signIn page
 app.get('/signIn', function (req, res) {
   res.status(200).render('signIn');
@@ -35,6 +46,7 @@ app.get('/signUp', function (req, res) {
 });
 
 // accountPage
+<<<<<<< HEAD
 app.get('/accountPage/:user', function (req, res) {
 	var collection = mongoConnection.collection('final');
 	collection.find({username: req.params.user}).toArray(function (err, results) {
@@ -47,6 +59,44 @@ app.get('/accountPage/:user', function (req, res) {
       res.status(200).render('signIn',{noUser:true});
     }
 	});
+=======
+app.get('/:username/accountPage', function (req, res) {
+  var dataCollection = mongoConnection.collection('accountData')
+  dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
+    if (err){
+      res.status(500).send("Error fetching account data");
+    }else if (results.length > 0) {
+      res.status(200).render('accountPage', {
+        account: results
+      });
+    } else {
+      alert("Invalid username");
+    }
+  })
+});
+
+app.post('/newAccount/addAccount', function (req, res) {
+  var dataCollection = mongoConnection.collection('accountData')
+  if (req.body && req.body.username && req.body.address) {
+    var accountObj = {
+      username: req.body.username,
+      address: req.body.address,
+      accounts: {
+        checkings: [
+          {
+            balance: 0
+          }
+        ],
+        savings: 0
+      }
+    };
+
+    dataCollection.insert( accountObj );
+    res.status(200).send("success");
+  } else {
+    res.status(400).send("Request body needs a 'username' field");
+  }
+>>>>>>> origin/master
 });
 
 app.use(express.static('public'));
@@ -55,15 +105,16 @@ app.use(express.static('public'));
 app.get('*', function (req, res) {
   res.status(404).render('404');
 });
-
 MongoClient.connect(mongoURL, function (err, connection) {
   if (err) {
     throw err;
   }
   mongoConnection = connection;
+
   app.listen(port, function () {
-    console.log("== Server listening on port:", port);
+    console.log("== Server is listening on port", port);
   });
+<<<<<<< HEAD
 });
 
 // Pass in mongoConnection and the query wrapped in brackets: {}.
@@ -75,3 +126,6 @@ function findDocuments(db, query) {
 	return docs;
   });
 }
+=======
+})
+>>>>>>> origin/master
