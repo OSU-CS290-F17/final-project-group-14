@@ -48,8 +48,10 @@ app.get('/signUp', function (req, res) {
 // accountPage
 app.get('/:user/accountPage/', function (req, res) {
 	var collection = mongoConnection.collection('final');
+  console.log(req.params.user);
 	collection.find({username: req.params.user}).toArray(function (err, results) {
-  if (err) {
+    console.log(results);
+    if (err) {
     res.status(500).send("Database Error");
     } else if (results.length > 0) {
 		  console.log(results[0]);
@@ -92,18 +94,17 @@ app.get('/:username/accountPage', function (req, res) {
 */
 
 app.post('/newAccount/addAccount', function (req, res) {
-  var dataCollection = mongoConnection.collection('accountData')
+  var dataCollection = mongoConnection.collection('final')
   if (req.body && req.body.username && req.body.address) {
     var accountObj = {
       username: req.body.username,
       address: req.body.address,
-      accounts: {
-        checkings: [
-          {
-            balance: 0
-          }
-        ],
-        savings: 0
+      checkings: 0,
+      savings: 0,
+      history:{
+        date: (new Date()).toDateString(),
+        description: "Account Creation",
+        balance: 0
       }
     };
 
@@ -114,17 +115,27 @@ app.post('/newAccount/addAccount', function (req, res) {
   }
 });
 
+// Deposit/Withdrawl
 app.post('/:user/accountChange', function (req, res) {
   console.log("Check");
-  var dataCollection = mongoConnection.collection('accountData')
+  var dataCollection = mongoConnection.collection('final')
   console.log(req.body.account);
   if (req.body && req.body.account && req.body.transaction && req.body.amount) {
     var d = new Date();
-    var checkingsObj = {date: d.toDateString(), description: req.body.transaction, amount: req.body.amount};
-
-    dataCollection.updateOne({username:req.params.user},{checkings:checkingsObj});
+    if(req.body.transaction == "deposit"){
+      if(req.body.account == "checkings"){
+        dataCollection.updateOne({username:req.params.user},{$inc:{checkings :parseInt(req.body.amount)}});
+      }else{
+        dataCollection.updateOne({username:req.params.user},{$inc:{savings:parseInt(req.body.amount)}});
+      }
+    } else {
+      if(req.body.account == "checkings"){
+        dataCollection.updateOne({username:req.params.user},{$inc:{checkings :-parseInt(req.body.amount)}});
+      }else{
+        dataCollection.updateOne({username:req.params.user},{$inc:{savings:-parseInt(req.body.amount)}});
+      }
+    }
     res.status(200).send("success");
-    console.log("Check 2");
   } else {
     res.status(400).send("Request body needs a 'username' field");
   }

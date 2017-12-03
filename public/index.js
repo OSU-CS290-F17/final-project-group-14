@@ -117,4 +117,5 @@ document.addEventListener('DOMContentLoaded', function () {
   if(changeAmountButton) {changeAmountButton.addEventListener('click', changeAmount)}
   var transferButton = document.getElementById('transfer');
   if(transferButton) {transferButton.addEventListener('click', transfer)};
+
 });
