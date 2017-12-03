@@ -30,18 +30,10 @@ var port = process.env.PORT || 3000;
  */
 
 // root path
-app.get('/:username/accountPage', function (req, res) {
-  dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
-    if (err){
-      res.status(500).send("Error fetching account data");
-    }else if (results > 0) {
-      res.status(200).render('accountPage', {
-        account: results
-      });
-    }
-  })
-
+app.get('/', function (req, res) {
+  res.status(200).render('homePage');
 });
+
 
 // signIn page
 app.get('/signIn', function (req, res) {
@@ -55,8 +47,16 @@ app.get('/signUp', function (req, res) {
 });
 
 // accountPage
-app.get('/accountPage', function (req, res) {
-  res.status(200).render('accountPage');
+app.get('/:username/accountPage', function (req, res) {
+  dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
+    if (err){
+      res.status(500).send("Error fetching account data");
+    }else if (results > 0) {
+      res.status(200).render('accountPage', {
+        account: results
+      });
+    }
+  })
 });
 
 app.post('/newAccount/addAccount', function (req, res) {
@@ -65,6 +65,14 @@ app.post('/newAccount/addAccount', function (req, res) {
     var accountObj = {
       username: req.body.username,
       address: req.body.address,
+      accounts: {
+        checkings: [
+          {
+            balance: 0
+          }
+        ],
+        savings: 0
+      }
     };
 
     dataCollection.insert( accountObj );
