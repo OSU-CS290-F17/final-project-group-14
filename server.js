@@ -12,7 +12,8 @@ var mongoUser = process.env.MONGO_USER;
 var mongoPassword = process.env.MONGO_PASSWORD;
 var mongoDBName = process.env.MONGO_DB;
 
-var mongoURL = 'mongodb://cs290_nelsjako:cs290_nelsjako@classmongo.engr.oregonstate.edu/cs290_nelsjako';
+var mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword +
+  '@' + mongoHost;
 
 var mongoConnection = null;
 
