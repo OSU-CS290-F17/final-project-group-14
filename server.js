@@ -48,6 +48,7 @@ app.get('/signUp', function (req, res) {
 
 // accountPage
 app.get('/:username/accountPage', function (req, res) {
+  var dataCollection = mongoConnection.collection('accountData')
   dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
     if (err){
       res.status(500).send("Error fetching account data");
