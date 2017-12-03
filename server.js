@@ -37,7 +37,6 @@ app.get('/', function (req, res) {
 
 // signIn page
 app.get('/signIn', function (req, res) {
-  console.log("lol");
   res.status(200).render('signIn');
 });
 
@@ -52,10 +51,12 @@ app.get('/:username/accountPage', function (req, res) {
   dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
     if (err){
       res.status(500).send("Error fetching account data");
-    }else if (results > 0) {
+    }else if (results.length > 0) {
       res.status(200).render('accountPage', {
         account: results
       });
+    } else {
+      alert("Invalid username");
     }
   })
 });
