@@ -12,13 +12,14 @@ var mongoUser = process.env.MONGO_USER;
 var mongoPassword = process.env.MONGO_PASSWORD;
 var mongoDBName = process.env.MONGO_DB;
 
-var mongoURL = 'mongodb://' + mongoUser + ':' + mongoPassword +
-  '@' + mongoHost + ':' + mongoPort + '/' + mongoDBName;
+var mongoURL = 'mongodb://cs290_nelsjako:cs290_nelsjako@classmongo.engr.oregonstate.edu/cs290_nelsjako';
 
 var mongoConnection = null;
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+app.use(bodyParser.json());
 
 var port = process.env.PORT || 3000;
 
@@ -30,7 +31,7 @@ var port = process.env.PORT || 3000;
 
 // root path
 app.get('/:username/accountPage', function (req, res) {
-  dataCollection.find({ username: req.params.username }).toArray(funtion (err, results) {
+  dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
     if (err){
       res.status(500).send("Error fetching account data");
     }else if (results > 0) {
@@ -39,7 +40,7 @@ app.get('/:username/accountPage', function (req, res) {
       });
     }
   })
-  res.status(200).render('accountPage');
+
 });
 
 // signIn page
@@ -57,8 +58,8 @@ app.get('/accountPage', function (req, res) {
   res.status(200).render('accountPage');
 });
 
-app.post('/newAccount/:username', function (req, res) {
-
+app.post('/newAccount/addAccount', function (req, res) {
+  var dataCollection = mongoConnection.collection('accountData')
   if (req.body && req.body.username && req.body.address) {
     var accountObj = {
       username: req.body.username,
@@ -66,6 +67,7 @@ app.post('/newAccount/:username', function (req, res) {
     };
 
     dataCollection.insert( accountObj );
+    res.status(200).send("success");
   } else {
     res.status(400).send("Request body needs a 'username' field");
   }
@@ -82,7 +84,7 @@ MongoClient.connect(mongoURL, function (err, connection) {
     throw err;
   }
   mongoConnection = connection;
-  var dataCollection = mongoConnection.collection()
+
   app.listen(port, function () {
     console.log("== Server is listening on port", port);
   });
