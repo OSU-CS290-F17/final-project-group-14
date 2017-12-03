@@ -2,40 +2,79 @@
 
 {{>accountHeader}}
 
-<div class="transfer-from">
-  <p class="transfer-title">Transfer from</p>
+<div id="transaction">
+  <h2>Depoist and Withdrawl</h2>
 
-  <label for="transfer-from-acc">Transaction</label>
-  <select id="transfer-from-acc" class="transfer-from-input" name="transfer-from-acc">
-    <option selected value="">Choose an account</option>
-    <!--check if user has checking or savings based off database -->
-    <option>checking</option>
-    <option>savings</option>
-  </select>
+  <div class="transaction-account">
+    <p>Add/Subtract from</p>
+
+    <label for="transact-from-acc">Transaction</label>
+    <select id="transact-from-acc" class="transact-from-input" name="transact-from-acc">
+      <option selected value="">Choose an account</option>
+      <option>checkings</option>
+      <option>savings</option>
+    </select>
+  </div>
+
+  <div class="transaction-type">
+    <p>Withdraw or Deposit</p>
+
+    <label for="transact-type">Transaction</label>
+    <select id="transact-type" class="transact-type-input" name="transact-type">
+      <option selected value="">Choose an transaction</option>
+      <option>deposit</option>
+      <option>withdraw</option>
+    </select>
+  </div>
+
+  <div class="transact-amount">
+    <p class="transact-title">Amount</p>
+
+    <label for="transact-amount">Transfer</label>
+    <input type="number" id="transact-amount">$</input>
+  </div>
+
+  <div class="transfer-footer">
+    <a href="/"><button class="transfer-accept" type="button">Accept</button></a>
+  </div>
 </div>
 
-<div class="transfer-to">
-  <p class="transfer-title">Transfer from</p>
+<div id = "tranfering">
+  <h2>Transfer Money</h2>
+  <div class="transfer-from">
+    <p class="transfer-title">Transfer from</p>
 
-  <label for="transfer-to-acc">Transfer</label>
-  <select id="transfer-to-acc" class="transfer-from-input" name="transfer-to-acc">
-    <option selected value="">Choose an account</option>
-    <!--check if user has checking or savings based off database -->
-    <option>checking</option>
-    <option>savings</option>
-  </select>
-</div>
+    <label for="transfer-from-acc">Transaction</label>
+    <select id="transfer-from-acc" class="transfer-from-input" name="transfer-from-acc">
+      <option selected value="">Choose an account</option>
+      <!--check if user has checking or savings based off database -->
+      <option>checking</option>
+      <option>savings</option>
+    </select>
+  </div>
 
-<div class="transfer-amount">
-  <p class="transfer-title">Amount</p>
+  <div class="transfer-to">
+    <p class="transfer-title">Transfer from</p>
 
-  <label for="transfer-amount-input">Transfer</label>
-  <input type="number" id="transfer-amount-input">$</input>
+    <label for="transfer-to-acc">Transfer</label>
+    <select id="transfer-to-acc" class="transfer-from-input" name="transfer-to-acc">
+      <option selected value="">Choose an account</option>
+      <!--check if user has checking or savings based off database -->
+      <option>checking</option>
+      <option>savings</option>
+    </select>
+  </div>
 
-  <!--Add memo??-->
-</div>
+  <div class="transfer-amount">
+    <p class="transfer-title">Amount</p>
 
-<div class="transfer-footer">
-  <a href="/"><button class="transfer-cancel" type="button">Cancel</button></a>
-  <a href="/"><button class="transfer-accept" type="button">Accept</button></a>
+    <label for="transfer-amount-input">Transfer</label>
+    <input type="number" id="transfer-amount-input">$</input>
+
+    <!--Add memo??-->
+  </div>
+
+  <div class="transfer-footer">
+    <a href="/"><button class="transfer-accept" type="button">Accept</button></a>
+  </div>
 </div>
