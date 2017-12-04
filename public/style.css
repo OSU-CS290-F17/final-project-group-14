@@ -7,7 +7,7 @@
 .hidden {
   display: none;
 }
-.navbar{
+.navbar.internal{
   position: fixed;
   height: 70px;
   width: 100%;
@@ -521,7 +521,6 @@
 
 .acc-header-item{
   display: inline-block;
-  height: calc(100% - 20px);
   margin: 0 20px;
   width: auto;
   font-size: 20px;
