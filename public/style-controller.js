@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(){
       switchNavBar(scrollY);
 
   });
-  if(document.getElementById('overview')){
+  if(document.getElementById('account-header')){
     document.body.style.background = "#f7f6f3";
   }
   if(document.getElementById('overview')){

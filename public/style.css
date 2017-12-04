@@ -572,6 +572,94 @@
 }
 
 .transfer-wrapper{
-  margin: 0 30px;
-  max-width: calc(100%-60px);
+  max-width: calc(1440px - 50px);
+  width: 100%;
+  position: relative;
+  left: calc(50% - 720px);
+  height: auto;
+  background: white;
+  padding: 0 25px;
+}
+.transaction-flex{
+  flex: 1 1 auto;
+  max-width: calc(33% - 20px);
+  margin: 0 10px;
+}
+@media screen and (max-width: 1440px) {
+  .transfer-wrapper{
+    max-width: (100% - 50px);
+    left: 0;
+  }
+  .transaction-flex{
+    max-width: calc(33% - 30px);
+  }
+}
+
+.transaction-flex-wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+
+.transfer-wrapper h2{
+  width: 100%;
+  text-align: center;
+  font-weight: lighter;
+  padding: 30px 0 20px 0;
+}
+.transfer-wrapper button{
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 200px;
+  font-size: 18px;
+  background:  #0a4386;
+  color: white;
+  position: relative;
+  left: calc(100% - 220px);
+  margin-bottom: 20px;
+}
+.transaction-flex label{
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: lighter;
+}
+.transfer-wrapper button:hover{
+  background: #116bc5;
+  cursor: pointer;
+}
+.transact-input{
+  height: 40px;
+  width: calc(100% - 20px);
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: lighter;
+  margin: 0;
+  border: 1px black solid;
+  padding-left: 20px;
+}
+
+.transfer-wrapper input[type=number]{
+  height: 38px;
+}
+.transact-input option{
+  font-size: 20px;
+  font-weight: lighter;
+}
+.transaction-flex p{
+  display: none;
+}
+
+
+.input-dollar-sign{
+  position: relative;
+  top: -40px;
+  padding-left: 5px;
+
+  font-size: 26px;
+  font-weight: lighter;
 }
