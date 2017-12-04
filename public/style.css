@@ -527,7 +527,7 @@
   font-size: 20px;
   font-weight: lighter;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px 15px;
 }
 
 .acc-header-item:hover{
@@ -567,6 +567,11 @@
 }
 
 .acc-balance{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: normal;
+}
+
+.transfer-wrapper{
+  margin: 0 30px;
+  max-width: calc(100%-60px);
 }
