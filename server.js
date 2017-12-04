@@ -110,11 +110,11 @@ app.post('/newAccount/addAccount', function (req, res) {
           address: req.body.address,
           checkings: 0,
           savings: 0,
-          history:{
+          history: [{
             date: (new Date()).toDateString(),
             description: "Account Creation",
             balance: 0
-          }
+          }]
         };
         dataCollection.insert( accountObj );
         res.status(200).send("success");
