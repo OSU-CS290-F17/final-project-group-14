@@ -101,11 +101,13 @@ app.post('/newAccount/addAccount', function (req, res) {
       address: req.body.address,
       checkings: 0,
       savings: 0,
-      history:{
-        date: (new Date()).toDateString(),
-        description: "Account Creation",
-        balance: 0
-      }
+      history:[
+        {
+          date: (new Date()).toDateString(),
+          description: "Account Creation",
+          amount: 0
+        }
+      ]
     };
 
     dataCollection.insert( accountObj );
@@ -121,19 +123,67 @@ app.post('/:user/accountChange', function (req, res) {
   var dataCollection = mongoConnection.collection('final')
   console.log(req.body.account);
   if (req.body && req.body.account && req.body.transaction && req.body.amount) {
-    var d = new Date();
+    var date = (new Date()).toDateString();
     if(req.body.transaction == "deposit"){
       if(req.body.account == "checkings"){
         dataCollection.updateOne({username:req.params.user},{$inc:{checkings :parseInt(req.body.amount)}});
+        var historyObj = {
+          date: date,
+          description: "Deposit",
+          amount: req.body.amount
+        };
+        dataCollection.updateOne({username: req.params.user},{$push: {history: historyObj}});
       }else{
         dataCollection.updateOne({username:req.params.user},{$inc:{savings:parseInt(req.body.amount)}});
       }
     } else {
       if(req.body.account == "checkings"){
         dataCollection.updateOne({username:req.params.user},{$inc:{checkings :-parseInt(req.body.amount)}});
+        var historyObj = {
+          date: date,
+          description: "Withdraw",
+          amount: req.body.amount
+        };
+        dataCollection.updateOne({username: req.params.user},{$push: {history: historyObj}});
       }else{
         dataCollection.updateOne({username:req.params.user},{$inc:{savings:-parseInt(req.body.amount)}});
       }
+    }
+    res.status(200).send("success");
+  } else {
+    res.status(400).send("Request body needs a 'username' field");
+  }
+});
+
+app.post('/:user/transfer', function (req, res) {
+  var dataCollection = mongoConnection.collection('final');
+  if (req.body && req.body.amount && req.body.toAccount && req.body.fromAccount) {
+    var date = (new Date()).toDateString();
+    var num = parseInt(req.body.amount)
+    var negNum = 0-num;
+    console.log(negNum);
+    console.log(req.body.fromAccount);
+    if (req.body.fromAccount == 'checking'){
+      console.log('sup');
+      dataCollection.updateOne({username:req.params.user},{$inc:{checkings :negNum}});
+      dataCollection.updateOne({username:req.params.user},{$inc:{savings:num}});
+      var historyObj = {
+        date: date,
+        description: "Transfer",
+        amount: req.body.amount
+      };
+      console.log(historyObj);
+      dataCollection.updateOne({username: req.params.user},{$push: {history: historyObj}});
+    } else {
+      dataCollection.updateOne({username:req.params.user},{$inc:{checkings :num}});
+      dataCollection.updateOne({username:req.params.user},{$inc:{savings:negNum}});
+      var historyObj = {
+        date: date,
+        description: "Transfer",
+        amount: req.body.amount
+      };
+      console.log(historyObj);
+      dataCollection.updateOne({username: req.params.user}, {$push: {history: historyObj}});
     }
     res.status(200).send("success");
   } else {

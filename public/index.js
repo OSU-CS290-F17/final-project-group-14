@@ -96,7 +96,34 @@ function changeAmount()
 
 function transfer()
 {
-
+  console.log('hi');
+  var fromAccount = document.getElementById('transfer-from-acc');
+  var toAccount = document.getElementById('transfer-to-acc');
+  var amount = document.getElementById('transfer-amount-input');
+  if (fromAccount.selectedIndex == 0){
+    alert("Please select an account to transfer from")
+  } else if (toAccount.selectedIndex == 0){
+    alert("Please select an account to transfer to")
+  } else {
+    var postRequest = new XMLHttpRequest();
+    var postURL = "/" + getUser() + "/transfer";
+    postRequest.open('POST', postURL);
+    var userObj = {
+      amount: amount.value,
+      fromAccount: fromAccount.options[fromAccount.selectedIndex].text,
+      toAccount: toAccount.options[toAccount.selectedIndex].text
+    };
+    var requestBody = JSON.stringify(userObj);
+    postRequest.setRequestHeader('Content-Type', 'application/json');
+    postRequest.addEventListener('load', function (event) {
+      if (event.target.status !== 200) {
+        alert("Error storing photo in database:\n\n\n" + event.target.response);
+      } else {
+        window.location.href = "./accountPage";
+      }
+    });
+    postRequest.send(requestBody);
+  }
 }
 
 function getUser() {
