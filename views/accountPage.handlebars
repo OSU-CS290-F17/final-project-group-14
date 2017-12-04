@@ -14,7 +14,7 @@
   <div class="savings-acc">
     <div class="overview-title">TOTAL SAVINGS</div>
     <div class="acc-balance bottom-right">{{savings}}</div>
-
+  -->
   <!--Check to see if user has a savings acc -->
   <!--
   <div class="account-card" id="savings-acc-card">
@@ -23,7 +23,7 @@
 
     <p class="acc-balance-label">Available balance</p>
   </div>
-  -->
+-->
 </aside>
 
 <!-- Below should be account info, like name and address -->
@@ -34,7 +34,7 @@
 
       <!--  elements below here => should their inner content be swapped? -->
       <p class="acc-balance-label">{{accounts.0.checkings.0.balance}}balance</p>
-      <div class="acc-balance">Some database value</div>
+      <div class="acc-balance">${{checkings}}</div>
     </div>
 
     <div class="acc-transactions">
@@ -60,7 +60,15 @@
             <th>Type</th>
             <th>Amount</th>
           </tr>
+          <!--
+            used to check stying on table
+          <tr>
+            <td>Sample Date</td>
+            <td>Sample Description</td>
+            <td>$200.20</td>
+          </tr>
 
+        -->
             {{#each accounts.checkings}}
               {{#unless balance}}
                 {{>accountActivity}}

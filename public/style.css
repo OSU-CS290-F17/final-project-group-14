@@ -556,17 +556,23 @@
 
 #account .overview-title{
   font-size: 22px;
+  padding: 0;
 }
-
+.acc-info{
+  height: auto;
+  width: calc(100% - 10px);
+  padding-left: 10px;
+}
 .acc-info .acc-balance-label{
   position: relative;
-  left:0;
+  left:10px;
   top:0;
   font-size: 14px;
   font-weight: lighter;
 }
 
 .acc-balance{
+  padding-left: 10px;
   font-size: 30px;
   font-weight: normal;
 }
@@ -661,5 +667,20 @@
   padding-left: 5px;
 
   font-size: 26px;
+  font-weight: lighter;
+}
+.acc-history-table{
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 16px;
+}
+
+th{
+  border-bottom: 3px solid rgba(0,0,0,.2);
+}
+
+td{
+  text-align: center;
+  border-bottom: 1px dashed black;
   font-weight: lighter;
 }
