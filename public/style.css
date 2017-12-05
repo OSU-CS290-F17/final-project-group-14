@@ -501,7 +501,7 @@
 
 .acc-balance-label{
   position: absolute;
-  bottom: 10px;
+  bottom: 6px;
   right: 10px;
   font-size: 14px;
 }
@@ -567,10 +567,9 @@
   width: calc(100% - 10px);
   padding-left: 10px;
 }
-.acc-info .acc-balance-label{
-  position: relative;
-  left:10px;
-  top:0;
+.acc-balance-label-main{
+  margin:0;
+  padding-left: 10px;
   font-size: 14px;
   font-weight: lighter;
 }
