@@ -685,6 +685,6 @@ th{
 
 td{
   text-align: left;
-  border-bottom: 1px dashed black;
+  border-bottom: .5px dashed rgba(0,0,0,.5);
   font-weight: lighter;
 }
