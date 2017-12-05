@@ -96,7 +96,6 @@ function changeAmount()
 
 function transfer()
 {
-  console.log('hi');
   var fromAccount = document.getElementById('transfer-from-acc');
   var toAccount = document.getElementById('transfer-to-acc');
   var amount = document.getElementById('transfer-amount-input');
