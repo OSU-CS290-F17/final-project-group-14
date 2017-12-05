@@ -50,11 +50,11 @@ app.get('/:user/accountPage/', function (req, res) {
 	var collection = mongoConnection.collection('final');
   console.log(req.params.user);
 	collection.find({username: req.params.user}).toArray(function (err, results) {
-    console.log(results);
+
     if (err) {
     res.status(500).send("Database Error");
     } else if (results.length > 0) {
-		  console.log(results[0]);
+
       res.status(200).render('accountPage', results[0]);
     } else {
       res.status(200).render('signIn',{noUser:true});
@@ -68,7 +68,7 @@ app.get('/:user/accountTransfer/', function (req, res) {
   if (err) {
     res.status(500).send("Database Error");
     } else if (results.length > 0) {
-		  console.log(results[0]);
+
       res.status(200).render('accountTransfer', results[0]);
     } else {
       res.status(200).render('signIn',{noUser:true});
@@ -127,9 +127,9 @@ app.post('/newAccount/addAccount', function (req, res) {
 
 // Deposit/Withdrawl
 app.post('/:user/accountChange', function (req, res) {
-  console.log("Check");
+
   var dataCollection = mongoConnection.collection('final')
-  console.log(req.body.account);
+
   if (req.body && req.body.account && req.body.transaction && req.body.amount) {
     var date = (new Date()).toDateString();
     if(req.body.transaction == "deposit"){
@@ -169,8 +169,8 @@ app.post('/:user/transfer', function (req, res) {
     var date = (new Date()).toDateString();
     var num = parseInt(req.body.amount)
     var negNum = 0-num;
-    console.log(negNum);
-    console.log(req.body.fromAccount);
+
+
     if (req.body.fromAccount == 'checking'){
       console.log('sup');
       dataCollection.updateOne({username:req.params.user},{$inc:{checkings :negNum}});
@@ -180,7 +180,7 @@ app.post('/:user/transfer', function (req, res) {
         description: "Transfer",
         amount: req.body.amount
       };
-      console.log(historyObj);
+
       dataCollection.updateOne({username: req.params.user},{$push: {history: historyObj}});
     } else {
       dataCollection.updateOne({username:req.params.user},{$inc:{checkings :num}});
@@ -190,7 +190,7 @@ app.post('/:user/transfer', function (req, res) {
         description: "Transfer",
         amount: req.body.amount
       };
-      console.log(historyObj);
+      
       dataCollection.updateOne({username: req.params.user}, {$push: {history: historyObj}});
     }
     res.status(200).send("success");
