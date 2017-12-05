@@ -678,6 +678,11 @@
   font-size: 16px;
 }
 
+.transaction-table{
+    height: 500px;
+    overflow-y: scroll;
+}
+
 th{
   border-bottom: 3px solid rgba(0,0,0,.2);
 }
