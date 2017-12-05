@@ -48,7 +48,7 @@ app.get('/signUp', function (req, res) {
 // accountPage
 app.get('/:user/accountPage/', function (req, res) {
 	var collection = mongoConnection.collection('final');
-  console.log(req.params.user);
+  
 	collection.find({username: req.params.user}).toArray(function (err, results) {
 
     if (err) {
@@ -172,7 +172,7 @@ app.post('/:user/transfer', function (req, res) {
 
 
     if (req.body.fromAccount == 'checking'){
-      console.log('sup');
+
       dataCollection.updateOne({username:req.params.user},{$inc:{checkings :negNum}});
       dataCollection.updateOne({username:req.params.user},{$inc:{savings:num}});
       var historyObj = {
@@ -190,7 +190,7 @@ app.post('/:user/transfer', function (req, res) {
         description: "Transfer",
         amount: req.body.amount
       };
-      
+
       dataCollection.updateOne({username: req.params.user}, {$push: {history: historyObj}});
     }
     res.status(200).send("success");
