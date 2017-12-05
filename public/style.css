@@ -537,6 +537,11 @@
   text-decoration: none;
 }
 
+.acc-header-item a:hover{
+  color: white;
+  text-decoration: none;
+}
+
 .account-main-wrapper{
   position: absolute;
   left : 420px;
