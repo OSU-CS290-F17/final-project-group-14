@@ -76,23 +76,6 @@ app.get('/:user/accountTransfer/', function (req, res) {
 	});
 });
 
-/*
-app.get('/:username/accountPage', function (req, res) {
-  var dataCollection = mongoConnection.collection('accountData')
-  dataCollection.find({ username: req.params.username }).toArray(function (err, results) {
-    if (err){
-      res.status(500).send("Error fetching account data");
-    }else if (results.length > 0) {
-      res.status(200).render('accountPage', {
-        account: results
-      });
-    } else {
-      alert("Invalid username");
-    }
-  })
-});
-*/
-
 app.post('/newAccount/addAccount', function (req, res) {
   var dataCollection = mongoConnection.collection('final')
   if (req.body && req.body.username && req.body.address) {
@@ -190,7 +173,7 @@ app.post('/:user/transfer', function (req, res) {
         description: "Transfer",
         amount: req.body.amount
       };
-      
+
       dataCollection.updateOne({username: req.params.user}, {$push: {history: historyObj}});
     }
     res.status(200).send("success");
