@@ -537,6 +537,11 @@
   text-decoration: none;
 }
 
+.acc-header-item a:hover{
+  color: white;
+  text-decoration: none;
+}
+
 .account-main-wrapper{
   position: absolute;
   left : 420px;
@@ -680,6 +685,6 @@ th{
 
 td{
   text-align: left;
-  border-bottom: 1px dashed black;
+  border-bottom: .5px dashed rgba(0,0,0,.5);
   font-weight: lighter;
 }
