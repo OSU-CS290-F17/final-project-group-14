@@ -5,7 +5,12 @@
 
 <div id="sign-in-box">
 	{{#if noUser}}
-		<label>Username not found.</label>
+  <div class="alert alert-danger alert-dismissable fade show">
+    <strong>Login Failed</strong> Invalid username.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 	{{/if}}
   <div class="login-body">
     <div class="login-username">

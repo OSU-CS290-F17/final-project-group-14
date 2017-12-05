@@ -9,21 +9,13 @@
     <p class="acc-balance-label">Available balance</p>
   </div>
 
-  <!-- Show if savings exists -->
-  <!--
-  <div class="savings-acc">
-    <div class="overview-title">TOTAL SAVINGS</div>
-    <div class="acc-balance bottom-right">{{savings}}</div>
-  -->
-  <!--Check to see if user has a savings acc -->
-  <!--
   <div class="account-card" id="savings-acc-card">
     <div class="overview-title" >TOTAL SAVINGS</div>
-    <div class="acc-balance bottom-right">Some database value</div>
+    <div class="acc-balance bottom-right">${{savings}}</div>
 
     <p class="acc-balance-label">Available balance</p>
   </div>
--->
+
 </aside>
 
 <!-- Below should be account info, like name and address -->
@@ -33,7 +25,7 @@
       <div class="overview-title">TOTAL CHECKING</div>
 
       <!--  elements below here => should their inner content be swapped? -->
-      <p class="acc-balance-label">{{accounts.0.checkings.0.balance}}balance</p>
+      <p class="acc-balance-label">balance</p>
       <div class="acc-balance">${{checkings}}</div>
     </div>
 
@@ -56,7 +48,7 @@
       <div class="transaction-table">
         <table class="acc-history-table">
           <tr>
-            <th>Description</th>
+            <th>Date</th>
             <th>Type</th>
             <th>Amount</th>
           </tr>
@@ -69,10 +61,8 @@
           </tr>
 
         -->
-            {{#each accounts.checkings}}
-              {{#unless balance}}
+            {{#each history}}
                 {{>accountActivity}}
-              {{/unless}}
             {{/each}}
 
         </table>

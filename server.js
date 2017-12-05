@@ -96,22 +96,30 @@ app.get('/:username/accountPage', function (req, res) {
 app.post('/newAccount/addAccount', function (req, res) {
   var dataCollection = mongoConnection.collection('final')
   if (req.body && req.body.username && req.body.address) {
-    var accountObj = {
-      username: req.body.username,
-      address: req.body.address,
-      checkings: 0,
-      savings: 0,
-      history:[
-        {
-          date: (new Date()).toDateString(),
-          description: "Account Creation",
-          amount: 0
-        }
-      ]
-    };
 
-    dataCollection.insert( accountObj );
-    res.status(200).send("success");
+    dataCollection.find({username: req.body.username}).toArray(function (err, results) {
+    if (err) {
+      res.status(500).send("Database Error");
+      } else if (results.length > 0) {
+        res.status(409).send("User already exists");
+      } else {
+
+        var accountObj = {
+          username: req.body.username,
+          address: req.body.address,
+          checkings: 0,
+          savings: 0,
+          history: [{
+            date: (new Date()).toDateString(),
+            description: "Account Creation",
+            balance: 0
+          }]
+        };
+        dataCollection.insert( accountObj );
+        res.status(200).send("success");
+      }
+  	});
+
   } else {
     res.status(400).send("Request body needs a 'username' field");
   }
